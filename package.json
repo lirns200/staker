@@ -1,0 +1,14 @@
+{
+  "name": "pixel-zombie-online",
+  "version": "1.0.0",
+  "description": "2D Pixel Zombie Open World Online Game",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "client-dev": "cd client && npm run dev"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
+}
