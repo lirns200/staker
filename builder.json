@@ -6,7 +6,8 @@
     "repo": "staker"
   },
   "ios": {
-    "path": "client/ios"
+    "path": "client/ios",
+    "scheme": "App"
   },
   "flutter": {
     "watch": {}
