@@ -31,21 +31,30 @@ for (let i = 0; i < 20; i++) {
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
 
-    // Create a new player
-    players[socket.id] = {
-        id: socket.id,
-        x: 0,
-        y: 0,
-        rotation: 0,
-        health: 100
-    };
+    socket.on('playerJoin', (data) => {
+        players[socket.id] = {
+            id: socket.id,
+            nickname: data.nickname || 'Stalker',
+            x: 0,
+            y: 0,
+            rotation: 0,
+            health: 100
+        };
 
-    // Send current state to the new player
-    socket.emit('currentPlayers', players);
-    socket.emit('currentZombies', zombies);
+        // Send current state to the new player
+        socket.emit('currentPlayers', players);
+        socket.emit('currentZombies', zombies);
 
-    // Notify others about the new player
-    socket.broadcast.emit('newPlayer', players[socket.id]);
+        // Notify others about the new player
+        socket.broadcast.emit('newPlayer', players[socket.id]);
+    });
+
+    socket.on('playerShoot', (shootData) => {
+        socket.broadcast.emit('otherPlayerShoot', {
+            id: socket.id,
+            ...shootData
+        });
+    });
 
     socket.on('playerMovement', (movementData) => {
         if (players[socket.id]) {
