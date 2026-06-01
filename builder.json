@@ -1,0 +1,16 @@
+{
+  "project": "PixelStalker",
+  "platform": "ios",
+  "github": {
+    "owner": "lirns200",
+    "repo": "staker"
+  },
+  "ios": {
+    "path": "client/ios"
+  },
+  "flutter": {
+    "watch": {}
+  },
+  "reactNative": {},
+  "mobai": {}
+}
